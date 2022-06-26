@@ -12,9 +12,15 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField]
     private float sideSpeed;
 
+
     private Rigidbody rb;
 
     private float currentSpeed;
+
+
+
+
+
 
     private void Awake()
     {
@@ -32,6 +38,28 @@ public class PlayerController : Singleton<PlayerController>
         transform.position += new Vector3(0, 0, currentSpeed * Time.deltaTime);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        var crewMember = other.GetComponent<Crew>();
+        if (crewMember != null)
+        {
+            CrewManager.Instance.AddCrewMember(crewMember);
+        }
+
+        var obtsacle = other.GetComponent<Obstacle>();
+        if (obtsacle != null)
+        {
+            obtsacle.Collect();
+            CrewManager.Instance.RemoveCrewMember();
+        }
+
+        var archer = other.GetComponent<Archer>();
+        if (archer != null)
+        {
+            CrewManager.Instance.RemoveCrewMember();
+        }
+    }
+
     private void OnAfterStateChanged(GameState newState)
     {
         switch (newState)
@@ -45,6 +73,7 @@ public class PlayerController : Singleton<PlayerController>
                 currentSpeed = speed;
                 break;
             case GameState.Win:
+                currentSpeed = 0;
                 break;
             case GameState.Lose:
                 InputSystem.Instance.TouchPositionChanged -= OnTouchPositionChanged;
@@ -67,7 +96,7 @@ public class PlayerController : Singleton<PlayerController>
             transform.position.y,
             transform.position.z
         );
-        transform.position = Vector3.Lerp(transform.position,target,0.125f);
+        transform.position = Vector3.Lerp(transform.position, target, 0.125f);
 
 
     }

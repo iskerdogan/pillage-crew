@@ -2,17 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crew : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+public class Crew : MonoBehaviour, ICollectable
+{   
+    [SerializeField]
+    private Transform crewPosition;
+    public void Collect()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CollectCrewMember(Vector3 targetPosition,Vector3 targetScale)
     {
-        
+        transform.parent = PlayerController.Instance.transform;
+        transform.localScale = targetScale;
+        transform.localPosition = targetPosition;
     }
+
+    public void DropAtShip()
+    {
+        var player = PlayerController.Instance.transform.position;
+        transform.parent = null;
+        transform.localScale = Vector3.one;
+        transform.localPosition = new Vector3(player.x - 2, player.y, player.z);
+    }
+
+    public void RunCrew()
+    {
+        // var player = PlayerController.Instance.transform.position;
+        // transform.parent = null;
+        // for (int i = 0; i < CrewManager.Instance.crews.Count; i++)
+        // {
+        //     LeanTween.delayedCall(1f,()=>LeanTween.move(gameObject,new Vector3(crewPosition.position.x,crewPosition.position.y,crewPosition.position.z -i),.5f));
+            
+        // }
+    }
+    
+
 }
