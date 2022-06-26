@@ -16,13 +16,14 @@ public class Crew : MonoBehaviour, ICollectable
         transform.parent = PlayerController.Instance.transform;
         transform.localScale = targetScale;
         transform.localPosition = targetPosition;
+        GetComponent<BoxCollider>().enabled= false;
     }
 
     public void DropAtShip()
     {
         var player = PlayerController.Instance.transform.position;
         transform.parent = null;
-        transform.localScale = Vector3.one;
+        transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         transform.localPosition = new Vector3(player.x - 2, player.y, player.z);
     }
 

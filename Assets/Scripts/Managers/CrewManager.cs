@@ -7,10 +7,10 @@ using Utilities;
 public class CrewManager : Singleton<CrewManager>
 {
     [SerializeField]
-    private float horizontalOffset = 0.5f;
+    private float horizontalOffset = 0.05f;
 
     [SerializeField]
-    private float verticalOffset = 0.5f;
+    private float verticalOffset = 0.05f;
 
     public Stack<Crew> crews;
     private int columnCount = 0;
@@ -26,13 +26,13 @@ public class CrewManager : Singleton<CrewManager>
 
     public void AddCrewMember(Crew crewMember)
     {
-        if (crews.Count % 3 == 0)
+        if (crews.Count % 4 == 0)
         {
             columnCount++;
             lineCount = 0;
         }
-        var tempScale = new Vector3(0.5f, 0.5f, 0.5f);
-        var tempPosition = new Vector3((-horizontalOffset + (horizontalOffset * lineCount++)), 0.5f, columnCount * verticalOffset);
+        var tempScale = new Vector3(0.05f, 0.05f, 0.05f);
+        var tempPosition = new Vector3((-horizontalOffset + (horizontalOffset * lineCount++)), 0.65f, columnCount * verticalOffset);
         crewMember.CollectCrewMember(tempPosition, tempScale);
         crews.Push(crewMember);
 
@@ -41,10 +41,10 @@ public class CrewManager : Singleton<CrewManager>
     public void RemoveCrewMember()
     {
         crews.Pop().DropAtShip();
-        if (crews.Count % 3 == 0)
+        if (crews.Count % 4 == 0)
         {
             columnCount--;
-            lineCount = 2;
+            lineCount = 3;
         }
         else
         {

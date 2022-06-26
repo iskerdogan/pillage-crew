@@ -436,7 +436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634530820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.49, y: -0.108, z: 6.35}
+  m_LocalPosition: {x: 0.49, y: -0.108, z: 6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2590,6 +2590,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3647607112664531333, guid: 65dbba01fc4bbfd4e93831509fc9a850, type: 3}
   m_PrefabInstance: {fileID: 1710762369}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2095411074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095411075}
+  m_Layer: 0
+  m_Name: CrewPosiiton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2095411075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095411074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 150.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &189547054285027863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2852,6 +2883,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 979429804}
     m_Modifications:
+    - target: {fileID: 522446402, guid: 65dbba01fc4bbfd4e93831509fc9a850, type: 3}
+      propertyPath: crewPosition
+      value: 
+      objectReference: {fileID: 2095411075}
     - target: {fileID: 3647607112664531333, guid: 65dbba01fc4bbfd4e93831509fc9a850, type: 3}
       propertyPath: m_RootOrder
       value: 0
